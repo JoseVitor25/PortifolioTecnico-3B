@@ -1,22 +1,8 @@
-
 import java.util.Random;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author SESI_SENAI
- */
 public class Menu_Petiscos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu_Petiscos
-     */
     public Menu_Petiscos() {
         initComponents();
     }
@@ -31,9 +17,9 @@ public class Menu_Petiscos extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botaoRoleta = new javax.swing.JButton();
+        botaoBlackJack = new javax.swing.JButton();
+        botaoDados = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,24 +27,24 @@ public class Menu_Petiscos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Cassino Floquinho");
 
-        jButton1.setText("Roleta - Petisco Carne");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoRoleta.setText("Roleta - Petisco Carne");
+        botaoRoleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoRoletaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Caça Níqueis - Petisco Frango");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoBlackJack.setText("BlackJack - Petisco Frango");
+        botaoBlackJack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoBlackJackActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Poker - Petisco Cenoura");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botaoDados.setText("Dados - Petisco Cenoura");
+        botaoDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botaoDadosActionPerformed(evt);
             }
         });
 
@@ -73,14 +59,14 @@ public class Menu_Petiscos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jButton1)
+                        .addComponent(botaoRoleta)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(botaoBlackJack)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3))))
+                                .addComponent(botaoDados))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(jLabel2)))
@@ -95,32 +81,108 @@ public class Menu_Petiscos extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(botaoRoleta)
+                    .addComponent(botaoBlackJack)
+                    .addComponent(botaoDados))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showInputDialog (null, "Olá! Qual número você deseja apostar?");
+    private void botaoRoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoletaActionPerformed
+        
+        int num_armazenado = Integer.parseInt (JOptionPane.showInputDialog (null, "Olá! Qual número você deseja apostar?"));
         
         Random n = new Random();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        int numero = n.nextInt(37);
+        int i = 0;
+        
+        do{
+        if (num_armazenado == numero){
+            JOptionPane.showMessageDialog(null, "Parabéns! Você ganhou! " + numero); i = 1;break;}
+        else{num_armazenado = Integer.parseInt(JOptionPane.showInputDialog(null,"Tente novamente!"));
+        }
+        }while (i == 0);
+        
+    }//GEN-LAST:event_botaoRoletaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botaoBlackJackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBlackJackActionPerformed
+        
+        Random num_mesa  = new Random();
+        
+        int num1, num2, num3;
+        
+        num1 = num_mesa.nextInt(10);
+        num2 = num_mesa.nextInt(10);
+        num3 = num_mesa.nextInt(10);
+        
+        int num = num1 + num2 + num3;
+        
+        Random n = new Random();
+        
+        int numero1, numero2, numero3;
+       
+        numero1 = n.nextInt(10);
+        numero2 = n.nextInt(10);
+        numero3 = n.nextInt(10);
+        
+        JOptionPane.showMessageDialog(null, "Seu primeiro número foi: " + numero1 + ".");
+        JOptionPane.showMessageDialog(null, "Seu segundo número foi: " + numero2 + ".");
+        JOptionPane.showMessageDialog(null, "Seu terceiro número foi: " + numero3 + ".");
+       
+        int soma;
+        
+        soma = numero1 + numero2 + numero3;
+        
+        JOptionPane.showMessageDialog(null, "Sua soma foi: " + soma + ".");
+        JOptionPane.showMessageDialog(null, "O número da mesa foi: " + num + ".");
+        
+        if (num > 21){
+            JOptionPane.showMessageDialog(null,"Parabéns! Você ganhou porque a mesa ultrapassou o número 21. O número foi: " + num);
+        }
+        
+        if(num > soma){
+            JOptionPane.showMessageDialog(null,"Você perdeu! Pois o número da mesa é maior que o seu. Tente novamente! Sua soma foi: " + soma + ".");
+        }
+        
+        if(soma > num){
+            JOptionPane.showMessageDialog(null,"Você ganhou! Sua soma foi maior que o número da mesa.");
+        }
+        
+        if(soma > 21){
+            JOptionPane.showMessageDialog(null,"Você perdeu. Sua soma ultrapassou o número 21. Tente novamente!");
+        }
+        
+    }//GEN-LAST:event_botaoBlackJackActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void botaoDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDadosActionPerformed
+       
+       int num_soma;
+       int num_armazenado = Integer.parseInt (JOptionPane.showInputDialog(null,"Quantos petiscos você deseja apostar?"));
+       
+       Random n = new Random();
+        
+       int dado1 = n.nextInt(6);
+       int dado2 = n.nextInt(6);
+       
+       JOptionPane.showMessageDialog (null,"Seu 1º dado teve o valor de: " + dado1 + ".");
+       JOptionPane.showMessageDialog (null,"Seu 2º dado teve o valor de: " + dado2 + ".");
+       
+       int soma = dado1 + dado2;
+       
+       if(soma > 7){
+           JOptionPane.showMessageDialog(null, "Você ganhou! " + soma + ".");
+           num_soma = num_armazenado * 2;
+           JOptionPane.showMessageDialog (null,"Agora seus petiscos são: " + num_soma + ".");
+       }
+       
+       if(soma < 7){
+           JOptionPane.showMessageDialog(null,"Você perdeu! Tente novamente! Sua soma foi: " + soma + ".");
+       }
+    }//GEN-LAST:event_botaoDadosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -154,9 +216,9 @@ public class Menu_Petiscos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botaoBlackJack;
+    private javax.swing.JButton botaoDados;
+    private javax.swing.JButton botaoRoleta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
